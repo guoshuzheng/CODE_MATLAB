@@ -1,0 +1,11 @@
+clc;clear all;
+x = [2 1 3 2 1 5 1];
+N = 2*length(x) - 1;
+n = -length(x)+1:length(x) - 1;
+r = xcorr(x,x);
+X = fft(x,N);
+R = (abs(X)).^2;rl = ifft(R);
+subplot(221),stem(x,'.');axis([1,N,-inf,inf]);
+title('序列x(n)');grid;
+subplot(222),stem(n,r,'.');axis([min(n),max(n),-inf,inf]);
+title('直接线性自相关');grid;

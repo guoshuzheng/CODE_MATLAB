@@ -1,0 +1,16 @@
+clc;
+x = [2 1 3 2 1 5 1];h = [1 2 -1 -3];
+N = length(x)+length(h)-1;
+n = 0:N-1;
+x = [x,zeros(1,N - length(x))];
+h = [h,zeros(1,N - length(h))];
+X = fft(x);H = fft(h);
+Y = x.*H; y = ifft(Y);
+subplot(221),stem(n,x,'.');xlabel('n');ylabel('x(n)');
+title('序列x(n)');grid;
+subplot(222),stem(n,h,'.');xlabel('n');ylabel('h(n)');
+title('序列h(n)');grid;
+subplot(223),stem(n,Y,'.');xlabel('n');ylabel('y(n)');
+title('序列y(n)');grid;
+subplot(224),stem(n,y,'.');xlabel('n');ylabel('y(n)');
+title('序列y(n)');grid;
